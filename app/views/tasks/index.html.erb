@@ -1,12 +1,19 @@
 <h1>You Have The Following Tasks</h1>
 
 
-<% @tasks.each do |task| %>
-<p> <input type="checkbox" <%= task.completed ? "checked" : ""  %>> <%=task.title %></p>
-<%= link_to "Details", task_path(task)  %>
-<% end %>
-<br>
+  <% @tasks.each do |task| %>
+    <div class="task">
+      <p> <input type="checkbox" <%= task.completed ? "checked" : ""  %>> - <%=task.title%> - <%= link_to task_path(task), method: :delete do %>
+       <i class="fas fa-trash-alt"></i>
+      <%end%>
+      </p>
+      <%= link_to "Details", task_path(task)%>
+    </div>
+  <% end %>
+
 
 <%=link_to "Add a task", new_task_path%>
+
+
 
 
